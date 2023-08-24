@@ -4,6 +4,7 @@ import stateImage from './assets/images/state.png';
 import eventsImage from './assets/images/events.png';
 import Concepts from './Components/Concepts';
 import './index.css';
+import Header from './Header/Header';
 
 const concepts = [
   {
@@ -29,14 +30,10 @@ const concepts = [
 function App() {
   return (
     <div>
-      <header>
-        <img src={keyConceptsImage} alt="Medal badge with a star" />
-        <h1>Key React Concepts</h1>
-        <p>Selected key React concepts you should know about</p>
-      </header>
+        <Header keyConceptsImage={keyConceptsImage}/>
       <body>
-        <Concepts concepts={concepts}/>      
-      </body>
+        <Concepts concepts={concepts}/>
+      </body>     
     </div>
   );
 }
