@@ -1,36 +1,35 @@
 import React from 'react';
+
 import './styles.css';
 
 // don't change the Component name "App"
-// important: In this code editor, use React.useState() instead of just useState()
-export default function App(props) {
-  const prices = {
-    origin: 100,
-    disRate: 0.75
-  };
+export default function App() {
 
-  const buttonTexts = {
-    origin: "할인 적용하기",
-    changed: "할인 적용 되돌리기"
-  };
+  // const checkMessages = {
+  //   origin: "Invalid message",
+  //   checked: "Valid message"
+  // };
+  const alertMessages = {
+    origin: "Invalid message",
+    checked: "Valid message"
+  }
 
-  const [price, setPrice] = React.useState(prices.origin);
-  const [buttonText, setButtonText] = React.useState(buttonTexts.origin);
+  // const [checkMessage, setCheckMessage] = React.useState(checkMessages.origin); 
+  const [alertMessage, setAlertMessage] = React.useState(alertMessages.origin);
 
-  const clickHandler = () => {
-    if (price === prices.origin) {
-      setPrice(prices.origin*prices.disRate);
-      setButtonText(buttonTexts.changed);
+  const checkHandler = (event) => {
+    if (event.target.value.trim().length >= 3) {
+      setAlertMessage(alertMessages.checked);
     } else {
-      setPrice(prices.origin);
-      setButtonText(buttonTexts.origin);
+      setAlertMessage(alertMessages.origin);
     }
   };
 
     return (
-        <div>
-            <p>${price}</p>
-            <button onClick={clickHandler}>{buttonText}</button>
-        </div>
+        <form>
+            <label>Your message</label>
+            <input type="text" onChange={checkHandler}></input>
+            <p>{alertMessage}</p>
+        </form>
     );
 }
