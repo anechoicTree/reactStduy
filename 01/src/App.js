@@ -5,31 +5,20 @@ import './styles.css';
 // don't change the Component name "App"
 export default function App() {
 
-  // const checkMessages = {
-  //   origin: "Invalid message",
-  //   checked: "Valid message"
-  // };
-  const alertMessages = {
-    origin: "Invalid message",
-    checked: "Valid message"
-  }
+  const counts = {
+    init: 0
+  };
 
-  // const [checkMessage, setCheckMessage] = React.useState(checkMessages.origin); 
-  const [alertMessage, setAlertMessage] = React.useState(alertMessages.origin);
+  const [count, setCount] = React.useState(counts.init);
 
-  const checkHandler = (event) => {
-    if (event.target.value.trim().length >= 3) {
-      setAlertMessage(alertMessages.checked);
-    } else {
-      setAlertMessage(alertMessages.origin);
-    }
+  const countHander = () => {
+    setCount((prevState) => prevState + 1);
   };
 
     return (
-        <form>
-            <label>Your message</label>
-            <input type="text" onChange={checkHandler}></input>
-            <p>{alertMessage}</p>
-        </form>
+      <div>
+        <p id="counter">{count}</p>
+        <button onClick={countHander}>Increment</button>
+      </div>
     );
 }
