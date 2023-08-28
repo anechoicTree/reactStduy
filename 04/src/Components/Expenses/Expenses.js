@@ -23,7 +23,7 @@ const Expenses = (props) => {
           <ExpensesFilter selected={filteredYear} saveFiltered={filterHandler} />
         </div>
         <div>
-          {props.items.map(expense => <ExpenseItem date={expense.date} title={expense.title} amount={expense.amount} />)}
+          {props.items.map((expense) => <ExpenseItem key={expense.id} date={expense.date} title={expense.title} amount={expense.amount} />)}
         </div>
         {/* <div>
           <ExpenseItem date={props.expenses[0].date} title={props.expenses[0].title} amount={props.expenses[0].amount}/>
